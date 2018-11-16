@@ -121,20 +121,23 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
 
     return texts
 
-pll = list(range(800, 1300, 100))
-offset = list(range(-5, 5, 1))
 
-shmoo_result = np.array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                          [1, 0, 0, 0, 0, 0, 0, 0, 1, 3],
-                                          [3, 1, 0, 0, 0, 0, 0, 1, 2, 4],
-                                          [5, 2, 1, 0, 0, 0, 0, 2, 5, 6],
-                                          [9, 5, 3, 0, 0, 0, 1, 2, 6, 8]])
+if __name__ == "__main__":
 
-fig, ax = plt.subplots()
-im, cbar = heatmap(shmoo_result, pll, offset, ax=ax, cmap="Reds", cbarlabel="nand i/o shmoo")
+    pll = list(range(800, 1300, 100))
+    offset = list(range(-5, 5, 1))
 
-texts = annotate_heatmap(im, valfmt="{x:d}", size=10, threshold=0, textcolors=["white", "red"])
+    shmoo_result = np.array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                            [1, 0, 0, 0, 0, 0, 0, 0, 1, 3],
+                                            [3, 1, 0, 0, 0, 0, 0, 1, 2, 4],
+                                            [5, 2, 1, 0, 0, 0, 0, 2, 5, 6],
+                                            [9, 5, 3, 0, 0, 0, 1, 2, 6, 8]])
 
-fig.tight_layout()
-plt.show()
-plt.show()
+    fig, ax = plt.subplots()
+    im, cbar = heatmap(shmoo_result, pll, offset, ax=ax, cmap="Reds", cbarlabel="nand i/o shmoo")
+
+    texts = annotate_heatmap(im, valfmt="{x:d}", size=10, threshold=0, textcolors=["white", "red"])
+
+    fig.tight_layout()
+    plt.show()
+    plt.show()
